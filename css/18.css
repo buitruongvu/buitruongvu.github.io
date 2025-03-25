@@ -20,6 +20,17 @@ nav a {
 	text-align: center;
 	text-decoration: none;
 }
+.menu_left_1 {
+	background: white;
+	color: rgb(108, 117, 125);
+	border-color: rgb(108, 117, 125);
+	border-style: solid;
+	height: 40px;
+	width: 130px;
+	font-weight: bold;
+	border-radius: 3px;
+	cursor: pointer;
+}
 
 .menu_left {
 	float: left;
