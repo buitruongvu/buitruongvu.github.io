@@ -1,238 +1,802 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bui Truong Vu Resume</title>
+    <title>Bùi Trường Vũ | Full-Stack Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        /* Reset CSS cơ bản */
-        body, h1, h2, p, ul, ol, table {
+        :root {
+            --bg-primary: #0a192f;
+            --bg-secondary: #112240;
+            --bg-tertiary: #233554;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --text-light: #e6f1ff;
+            --accent: #64ffda;
+            --accent-glow: rgba(100, 255, 218, 0.1);
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            overflow-x: hidden;
         }
 
-        .container {
-            width: 100%;
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-tertiary);
+            border-radius: 5px;
+            border: 2px solid var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
         }
 
+        /* Header Navigation */
         header {
-            text-align: center;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(2, 12, 27, 0.7);
+            transition: all 0.3s;
         }
 
-        header h1 {
-            font-size: 2.2em;
-            color: #2c3e50;
-            margin-bottom: 15px;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
         }
 
         nav ul {
-            list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            list-style: none;
+            gap: 35px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: #3498db;
-            font-weight: 600;
+            color: var(--text-light);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
             transition: color 0.3s;
         }
 
+        nav ul li a span {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
         nav ul li a:hover {
-            color: #2980b9;
-            text-decoration: underline;
+            color: var(--accent);
         }
 
+        /* Global Section Layout */
         section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 600;
             margin-bottom: 40px;
+            color: var(--text-light);
+            width: 100%;
+            white-space: nowrap;
         }
 
-        h2 {
-            font-size: 1.5em;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            display: inline-block;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
+        .section-title span {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-right: 10px;
+            font-weight: 400;
         }
 
-        .profile-img {
-            max-width: 150px;
-            border-radius: 8px;
+        .section-title::after {
+            content: "";
             display: block;
+            position: relative;
+            width: 250px;
+            height: 1px;
+            margin-left: 20px;
+            background-color: var(--bg-tertiary);
+        }
+
+        /* Hero Section */
+        #hero .welcome {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            line-height: 1.1;
+        }
+
+        #hero h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        #hero p {
+            max-width: 650px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            color: var(--accent);
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            padding: 18px 30px;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-glow);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .about-text strong {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .skills-container {
+            margin-top: 30px;
+        }
+
+        .skills-category-title {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            list-style: none;
+        }
+
+        .skills-list li {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: var(--bg-secondary);
+            padding: 6px 14px;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .about-image {
+            position: relative;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .img-container {
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+            transition: all 0.3s;
+            position: relative;
+            border-radius: 4px;
+            background-color: var(--accent);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 4px;
+            mix-blend-mode: multiply;
+            filter: grayscale(100%) contrast(1);
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .img-container::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            top: 0; left: 0;
+            background-color: var(--bg-primary);
+            mix-blend-mode: screen;
+            transition: all 0.3s;
+        }
+
+        .img-container::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            top: 20px; left: 20px;
+            border-radius: 4px;
+            z-index: -1;
+            transition: all 0.3s;
+        }
+
+        .img-container:hover {
+            background: transparent;
+        }
+
+        .img-container:hover img {
+            mix-blend-mode: normal;
+            filter: none;
+        }
+
+        .img-container:hover::after {
+            top: 15px; left: 15px;
+        }
+
+        /* Experience Section */
+        .exp-container {
+            background: var(--bg-secondary);
+            padding: 35px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.5);
+        }
+
+        .exp-header h3 {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .exp-header h3 a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .exp-header .duration {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 8px 0 20px 0;
+        }
+
+        .exp-bullet {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .exp-bullet li {
+            position: relative;
+            padding-left: 25px;
             margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            text-align: justify;
         }
 
-        ul.about-list, ol.edu-list {
-            margin-left: 25px;
-            margin-top: 10px;
+        .exp-bullet li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
         }
 
-        ul.about-list li, ol.edu-list li {
-            margin-bottom: 8px;
+        /* Education & STEM Scores Section */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
 
-        /* Styling cho bảng điểm */
+        .edu-card {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .edu-card h3 {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+
+        .edu-card .sub {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .edu-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+            background: rgba(10, 25, 47, 0.6);
+            border-radius: 4px;
+            padding: 15px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
+            font-size: 0.95rem;
+            text-align: center;
         }
 
         th, td {
             padding: 12px;
-            text-align: center;
+            border-bottom: 1px solid var(--bg-tertiary);
         }
 
         th {
-            background-color: #f8f9fa;
-            color: #2c3e50;
-            font-weight: bold;
+            color: var(--text-light);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            background-color: var(--bg-tertiary);
+            text-transform: uppercase;
         }
 
-        tr:hover {
-            background-color: #f1f1f1;
+        td {
+            color: var(--text-secondary);
         }
 
-        .social-links p {
-            margin-bottom: 10px;
+        .high-score {
+            color: var(--accent);
+            font-weight: 600;
         }
 
-        .social-links a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        .social-links a:hover {
-            text-decoration: underline;
+        .project-card {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.5);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(100, 255, 218, 0.3);
+            box-shadow: 0 20px 30px -15px rgba(2,12,27,0.7);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .project-header .folder {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .project-links a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .project-tech {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: auto;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            align-items: center;
+            max-width: 600px;
+        }
+
+        #contact p {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eaeaea;
-            font-size: 0.9em;
-            color: #7f8c8d;
+            padding: 40px 0;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
         }
 
-        footer a {
-            color: #3498db;
-            text-decoration: none;
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .nav-container { padding: 20px; }
+            nav ul { display: none; } /* Trình bày tinh gọn trên mobile */
+            section { padding: 80px 20px; }
+            #hero h1 { font-size: 2.8rem; }
+            #hero h2 { font-size: 2.3rem; }
+            .about-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .about-image { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>My resume BUI TRUONG VU</h1>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">&lt; Vũ Bùi /&gt;</a>
             <nav>
                 <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#score">Score</a></li>
-                    <li><a href="#social">Social media</a></li>
+                    <li><a href="#about"><span>01.</span> Giới thiệu</a></li>
+                    <li><a href="#experience"><span>02.</span> Kinh nghiệm</a></li>
+                    <li><a href="#education"><span>03.</span> Học vấn</a></li>
+                    <li><a href="#projects"><span>04.</span> Dự án</a></li>
+                    <li><a href="#contact"><span>05.</span> Liên hệ</a></li>
                 </ul>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <section id="about">
-            <h2>About me</h2>
-            <img src="assets/image.jpg" alt="My photo" class="profile-img">
-            <p><em>I am working in the information technology field.</em></p>
-            <ul class="about-list">
-                <li><strong>Fullname</strong>: Bui Truong Vu</li>
-                <li><strong>Country</strong>: Vietnam</li>
+    <section id="hero">
+        <p class="welcome">Xin chào, tôi là</p>
+        <h1>Bùi Trường Vũ.</h1>
+        <h2>Full-Stack Developer & Tech Mentor.</h2>
+        <p>Tôi là một nhà phát triển phần mềm sở hữu tư duy chiến lược và định lượng nhạy bén. Đam mê xây dựng các hệ thống backend mở rộng, tối ưu UI/UX mượt mà và chuyển dịch các bài toán kinh doanh thành giải pháp công nghệ hiệu quả.</p>
+        <a href="#contact" class="cta-btn">Kết nối với tôi</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title"><span>01.</span> Về bản thân</h2>
+        <div class="about-wrapper">
+            <div class="about-text">
+                <p>Tôi có một sự kết hợp độc đáo giữa <strong>nền tảng Quản trị Kinh doanh chính quy tại Đại học Bách Khoa Hà Nội</strong> và <strong>năng lực kỹ thuật Full-Stack sâu sắc</strong>. Sự giao thoa này định hình cho tôi một tư duy thiết kế sản phẩm thực tế: không chỉ viết code sạch, tối ưu thuật toán mà luôn hướng đến luồng vận hành tinh gọn và giá trị thực tế cho người dùng cuối.</p>
+                <p>Bên cạnh việc trực tiếp phát triển các kiến trúc API và giao diện ứng dụng, tôi tự hào đóng vai trò là một người truyền cảm hứng công nghệ, giúp đơn giản hóa các khái niệm cấu trúc dữ liệu và lập trình hướng đối tượng cho các thế hệ học viên trẻ.</p>
+                
+                <div class="skills-container">
+                    <div class="skills-category-title"><i class="fa-solid fa-code"></i> Ngôn ngữ & Frontend</div>
+                    <ul class="skills-list">
+                        <li>JavaScript</li>
+                        <li>TypeScript</li>
+                        <li>Python</li>
+                        <li>React</li>
+                        <li>Tailwindcss</li>
+                        <li>HTML5 & CSS3</li>
+                    </ul>
+
+                    <div class="skills-category-title"><i class="fa-solid fa-server"></i> Backend & Cơ sở dữ liệu</div>
+                    <ul class="skills-list">
+                        <li>NestJS</li>
+                        <li>Django</li>
+                        <li>RESTful API</li>
+                        <li>Microservices</li>
+                        <li>SQL (PostgreSQL / MySQL)</li>
+                        <li>NoSQL (MongoDB)</li>
+                        <li>Firebase</li>
+                    </ul>
+
+                    <div class="skills-category-title"><i class="fa-solid fa-gears"></i> Công cụ & Kiến thức liên quan</div>
+                    <ul class="skills-list">
+                        <li>Git / GitHub</li>
+                        <li>Docker</li>
+                        <li>Postman</li>
+                        <li>Redis</li>
+                        <li>Swagger (OpenAPI)</li>
+                        <li>SOLID Principles</li>
+                        <li>OOP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="img-container">
+                    <img src="assets/image.jpg" alt="Bùi Trường Vũ Profile">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title"><span>02.</span> Kinh nghiệm làm việc</h2>
+        <div class="exp-container">
+            <div class="exp-header">
+                <h3>Giảng viên Lập trình (Part-time) <a href="https://mindx.edu.vn/" target="_blank">@ MindX Technology School</a></h3>
+                <div class="duration">Tháng 03/2025 – Hiện tại</div>
+            </div>
+            <ul class="exp-bullet">
+                <li><strong>Chương trình giảng dạy:</strong> Trực tiếp đứng lớp và điều phối các khóa học Lập trình trực quan (Scratch), Phát triển Game (GameMaker), và Lập trình Web Full-Stack (HTML/CSS, JavaScript) cho học viên từ 8-18 tuổi.</li>
+                <li><strong>Phương pháp sư phạm:</strong> Khéo léo đơn giản hóa các khái niệm kỹ thuật phức tạp (Lập trình hướng đối tượng - OOP, Giải thuật, Cấu trúc dữ liệu) thành các bài học trực quan sinh động, giúp nâng cao mức độ tương tác và hào hứng của lớp học lên tới 90%.</li>
+                <li><strong>Quản lý đầu ra:</strong> Đồng hành, hướng dẫn và cố vấn thành công cho hơn 15 học viên hoàn thiện đồ án tốt nghiệp (Capstone Projects) đạt chất lượng cao.</li>
+                <li><strong>Kết nối và Quản trị:</strong> Duy trì kênh tương tác chuyên nghiệp, báo cáo định kỳ tình hình học tập và lộ trình phát triển của học viên tới phụ huynh, tổ chức và điều phối thành công các buổi Demo Day giới thiệu sản phẩm công nghệ cuối khóa.</li>
             </ul>
-        </section>
+        </div>
+    </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <ol class="edu-list">
-                <li>Hanoi University of Science and Technology</li>
-                <li>Trung hoc pho thong Luong The Vinh</li>
-                <li>Trung hoc co so Quang Hung</li>
-            </ol>
-        </section>
+    <section id="education">
+        <h2 class="section-title"><span>03.</span> Học vấn & Chỉ số STEM</h2>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <h3>Đại học Bách Khoa Hà Nội (HUST)</h3>
+                <div class="sub">Cử nhân Quản trị Kinh doanh | 2021 – 2026</div>
+                <p>• Chuyên ngành: Quản trị Kinh doanh (Trường Kinh tế và Quản lý - SEM).</p>
+                <p>• Đồ án & Nghiên cứu: Ứng dụng mô hình nhận thức rủi ro công nghệ (Technology Risk Perception) để phân tích mức độ tin cậy đối với phương tiện điện cá nhân tại thị trường Việt Nam.</p>
+                <p>• Điểm nhấn: Phát triển tư duy phân tích dữ liệu chuyên sâu và tầm nhìn chiến lược hệ thống, kết hợp vững chắc với năng lực thực thi Công nghệ Thông tin.</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Niên khóa</th>
+                                <th colspan="2">Toán học</th>
+                                <th rowspan="2">Vật lý</th>
+                                <th rowspan="2">Tin học / IT</th>
+                            </tr>
+                            <tr>
+                                <th>Toán 1</th>
+                                <th>Toán 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2019</td>
+                                <td>8.0</td>
+                                <td>0.0</td>
+                                <td>9.0</td>
+                                <td class="high-score">10.0</td>
+                            </tr>
+                            <tr>
+                                <td>2020</td>
+                                <td class="high-score">10.0</td>
+                                <td>0.0</td>
+                                <td>2.0</td>
+                                <td>9.0</td>
+                            </tr>
+                            <tr>
+                                <td>2021</td>
+                                <td>8.0</td>
+                                <td>0.0</td>
+                                <td>8.0</td>
+                                <td>8.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="score">
-            <h2>Scores</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th rowspan="2">Year</th>
-                        <th colspan="2">Math</th>
-                        <th rowspan="2">Physics</th>
-                        <th rowspan="2">IT</th>
-                    </tr>
-                    <tr>
-                        <th>Math 1</th>
-                        <th>Math 2</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2019</td>
-                        <td>8</td>
-                        <td>0</td>
-                        <td>9</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>2020</td>
-                        <td>10</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>9</td>
-                    </tr>
-                    <tr>
-                        <td>2021</td>
-                        <td>8</td>
-                        <td>0</td>
-                        <td>8</td>
-                        <td>8</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+    <section id="projects">
+        <h2 class="section-title"><span>04.</span> Dự án thực chiến</h2>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <i class="fa-regular fa-folder folder"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>E-commerce RESTful API</h3>
+                    <p>Xây dựng hệ thống backend hiệu năng cao cho nền tảng thương mại điện tử, tuân thủ nghiêm ngặt kiến trúc mô-đun và nguyên lý SOLID sạch.</p>
+                </div>
+                <ul class="project-tech">
+                    <li>NestJS</li>
+                    <li>TypeScript</li>
+                    <li>Prisma / Postgres</li>
+                    <li>JWT</li>
+                    <li>Redis</li>
+                    <li>Swagger</li>
+                </ul>
+            </div>
 
-        <section id="social" class="social-links">
-            <h2>Social Media</h2>
-            <p>Youtube: <a href="https://youtube.com/@buitruongvu_" target="_blank">Bui Truong Vu</a></p>
-            <p>Facebook: <a href="https://www.facebook.com/m.buitruongvu" target="_blank">Bui Truong Vu</a></p>
-        </section>
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <i class="fa-regular fa-folder folder"></i>
+                        <div class="project-links">
+                            <a href="https://github.com/buitruongvu/kanban-project-BTV" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Kanban Board App</h3>
+                    <p>Ứng dụng quản trị công việc tương tác kéo-thả (drag-and-drop) mượt mà, tối ưu hiệu suất Hot-Module Replacement và kiểm soát mã nguồn nghiêm ngặt.</p>
+                </div>
+                <ul class="project-tech">
+                    <li>React</li>
+                    <li>TypeScript</li>
+                    <li>Vite</li>
+                    <li>Tailwindcss</li>
+                    <li>ESLint</li>
+                </ul>
+            </div>
 
-        <section id="online-course">
-            <h2>Online Course</h2>
-            <p><em>(Đang cập nhật)</em></p>
-        </section>
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <i class="fa-regular fa-folder folder"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>Pokémon Analytics Wiki</h3>
+                    <p>Ứng dụng tra cứu và phân tích dữ liệu Pokémon toàn diện, xử lý bất đồng bộ kết quả REST API và tối ưu giao diện tìm kiếm thời gian thực.</p>
+                </div>
+                <ul class="project-tech">
+                    <li>ReactJS</li>
+                    <li>REST API</li>
+                    <li>CSS Modules</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
 
-        <footer>
-            <p>Created by Bui Truong Vu - <a href="mailto:buitruongvu9@gmail.com">Email me</a></p>
-        </footer>
-    </div>
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <i class="fa-regular fa-folder folder"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3>Dynamic Quiz Platform</h3>
+                    <p>Hệ thống trắc nghiệm phân cấp độ trực tuyến (History & Science), tích hợp Real-time Database để theo dõi tiến độ và bảng xếp hạng.</p>
+                </div>
+                <ul class="project-tech">
+                    <li>JavaScript</li>
+                    <li>Firebase</li>
+                    <li>Firestore</li>
+                    <li>Auth</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title"><span>05.</span> Thông tin kết nối</h2>
+        <p>Tôi luôn tìm kiếm những cơ hội hợp tác phát triển giải pháp phần mềm, vị trí kỹ sư Full-Stack thử thách, hoặc cùng trao đổi về các công nghệ hệ thống. Đừng ngần ngại để lại lời nhắn!</p>
+        
+        <div class="social-icons">
+            <a href="https://youtube.com/@buitruongvu_" target="_blank" title="YouTube Channel"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.facebook.com/m.buitruongvu" target="_blank" title="Facebook cá nhân"><i class="fa-brands fa-facebook"></i></a>
+            <a href="mailto:buitruongvu9@gmail.com" title="Gửi Email trực tiếp"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+        
+        <a href="mailto:buitruongvu9@gmail.com" class="cta-btn">Say Hello <i class="fa-regular fa-paper-plane" style="margin-left: 5px;"></i></a>
+    </section>
+
+    <footer>
+        <p>Designed & Engineered by Bùi Trường Vũ © 2026</p>
+    </footer>
+
 </body>
 </html>
