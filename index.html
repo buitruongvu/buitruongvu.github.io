@@ -1,101 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8"/>
-	<meta name="description" content="My resume website"/>
-	<meta name="author" content="Bui Truong Vu"/>
-	<meta name="country" content="Vietnam"/>
- 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/18.css">
-	<title>Bui Truong Vu Resume</title>
-	<link rel="icon" 
-	      type="image/x-icon"
-	      href="/assets/image.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bui Truong Vu Resume</title>
+    <style>
+        /* Reset CSS cơ bản */
+        body, h1, h2, p, ul, ol, table {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+
+        .profile-img {
+            max-width: 150px;
+            border-radius: 8px;
+            display: block;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        ul.about-list, ol.edu-list {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        ul.about-list li, ol.edu-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Styling cho bảng điểm */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .social-links p {
+            margin-bottom: 10px;
+        }
+
+        .social-links a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-	<h1 id="menu_text">My resume BUI TRUONG VU</h1>
+    <div class="container">
+        <header>
+            <h1>My resume BUI TRUONG VU</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#score">Score</a></li>
+                    <li><a href="#social">Social media</a></li>
+                </ul>
+            </nav>
+        </header>
 
+        <section id="about">
+            <h2>About me</h2>
+            <img src="assets/image.jpg" alt="My photo" class="profile-img">
+            <p><em>I am working in the information technology field.</em></p>
+            <ul class="about-list">
+                <li><strong>Fullname</strong>: Bui Truong Vu</li>
+                <li><strong>Country</strong>: Vietnam</li>
+            </ul>
+        </section>
 
-	<nav>
-		<a href="#contact" class="menu_left_1">About</a>
-		<a href="#education" class="menu_left_1">Education</a>
-		<a href="#score" class="menu_left_1">Score</a>
-		<a href="#social" class="menu_right">Social media</a>
-	</nav>
+        <section id="education">
+            <h2>Education</h2>
+            <ol class="edu-list">
+                <li>Hanoi University of Science and Technology</li>
+                <li>Trung hoc pho thong Luong The Vinh</li>
+                <li>Trung hoc co so Quang Hung</li>
+            </ol>
+        </section>
 
-	<div id="flex_container">
-		<div id="left_side">
-			<hr>
-			<h2 id="contact">About me</h2>
-			<img src="assets/image.jpg" alt="My photo" width="100" height="100"/>
-			<p><em>I am working in the information technology field.</em></p>
-			<ul>
-				<li><strong>Fullname</strong>: Bui Truong Vu</li>
-				<li><strong>Country</strong>: Vietnam</li>
-			</ul>
-			<hr>
-			<h2 id="education">Education</h2>
-			<ol>
-				<li>Hanoi University of Science and Technology</li>
-				<li>Trung hoc pho thong Luong The Vinh</li>
-				<li>Trung hoc co so Quang Hung </li>
-			</ol>
-			
-			<h2 id="score">Scores</h2>
-			<table border="1">
-				<tr>
-					<th rowspan="2"></th>
-					<th colspan="2">Math</th>
-					<th rowspan="2">Physics</th>
-					<th rowspan="2">IT</th>
-				</tr>
-				<tr>
-					<th>Math 1</th>
-					<th>Math 2</th>
-				</tr>
-				<tr>
-					<th>2019</th>
-					<td>8</td>
-					<td>0</td>
-					<td>9</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<th>2020</th>
-					<td>10</td>
-					<td>0</td>
-					<td>2</td>
-					<td>9</td>
-				</tr>
-				<tr>
-					<th>2021</th>
-					<td>8</td>
-					<td>0</td>
-					<td>8</td>
-					<td>8</td>
-				</tr>
-			
-			</table>
-			
-			<h2 id="social">Social Media</h2>
-			<p>Youtube: <a href="https://youtube.com/@buitruongvu_">Bui Truong Vu</a></p>
-			<p>Facebook: <a href="https://www.facebook.com/m.buitruongvu">Bui Truong Vu</a></p>
-		</div>
-		<hr>
+        <section id="score">
+            <h2>Scores</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Year</th>
+                        <th colspan="2">Math</th>
+                        <th rowspan="2">Physics</th>
+                        <th rowspan="2">IT</th>
+                    </tr>
+                    <tr>
+                        <th>Math 1</th>
+                        <th>Math 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>10</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>2021</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>8</td>
+                        <td>8</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-		<div id="right_side">
-			<h2 id="course">Online Course</h2>
-			<div id="course_container">
-				
-				
-				
-				
-			</div>
-		</div>
-	</div>
-<hr>
-	<footer>
-		Created by Bui Truong Vu - <a href="mailto:buitruongvu9@gmail.com">Email me</a>
-	</footer>
+        <section id="social" class="social-links">
+            <h2>Social Media</h2>
+            <p>Youtube: <a href="https://youtube.com/@buitruongvu_" target="_blank">Bui Truong Vu</a></p>
+            <p>Facebook: <a href="https://www.facebook.com/m.buitruongvu" target="_blank">Bui Truong Vu</a></p>
+        </section>
+
+        <section id="online-course">
+            <h2>Online Course</h2>
+            <p><em>(Đang cập nhật)</em></p>
+        </section>
+
+        <footer>
+            <p>Created by Bui Truong Vu - <a href="mailto:buitruongvu9@gmail.com">Email me</a></p>
+        </footer>
+    </div>
 </body>
 </html>
